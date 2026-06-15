@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fbff;
+  --foreground: #102033;
+  --muted: #5c6b7b;
+  --card: rgba(255, 255, 255, 0.78);
+  --line: rgba(89, 116, 150, 0.22);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at top left, rgba(90, 160, 255, 0.28), transparent 32rem),
+    radial-gradient(circle at 75% 15%, rgba(126, 223, 198, 0.28), transparent 30rem),
+    linear-gradient(135deg, #f7fbff 0%, #eef6ff 48%, #fbfdff 100%);
+  min-height: 100vh;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(60, 98, 140, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60, 98, 140, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+.glass {
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 70px rgba(44, 72, 105, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(41, 121, 255, .30), rgba(31, 203, 165, .20), rgba(255,255,255,.6));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.pulse-line {
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.36), transparent);
+  animation: pulse-line 3.2s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+  0% { transform: translateX(-100%); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #eef6ff; }
+::-webkit-scrollbar-thumb { background: #bed3e8; border-radius: 999px; }
